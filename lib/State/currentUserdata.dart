@@ -8,6 +8,34 @@ class CurrentState extends ChangeNotifier{
   String get getUid  =>_uid;
   String get getEmail=>_email;
   FirebaseAuth _auth=FirebaseAuth.instance;
+  Future<String> OnStartup() async
+  {
+    String retval="error";
+    try{
+      FirebaseUser _firebaseUser= await _auth.currentUser();
+      _uid=_firebaseUser.uid;
+      _email=_firebaseUser.email;
+
+      retval="Success";
+    }catch(e){
+      print(e);
+    }
+    return retval;
+  }
+  Future<String> SignOut() async
+  {
+    String retval="error";
+    try{
+      await _auth.signOut();
+      _uid=null;
+      _email=null;
+
+      retval="Success";
+    }catch(e){
+      print(e);
+    }
+    return retval;
+  }
   Future<String> signUpUser(String email,String password) async{
     String retval="error";
     try{

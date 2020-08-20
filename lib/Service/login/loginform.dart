@@ -35,7 +35,7 @@ class _OurlofinForm extends State<OurloginForm>{
 
 
       if(_returnString=='success'){
-        Navigator.of(context).push( MaterialPageRoute(builder: (context)=>HomeScreen()));
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context)=>HomeScreen()), (route) => false);
       } else{
         Scaffold.of(context).showSnackBar(
           SnackBar(content: Text(_returnString),
@@ -66,7 +66,7 @@ class _OurlofinForm extends State<OurloginForm>{
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset('Image/download.png',height: 30,width: 24,),
+              Image.asset('Image/download.png',height: 20,width: 24,),
 
               Padding(
                 padding: const EdgeInsets.only(left: 10),
