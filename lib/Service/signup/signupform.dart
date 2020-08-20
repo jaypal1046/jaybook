@@ -15,8 +15,15 @@ class _OurSignupForm extends State<SignupForm>{
   Future _signUpUser(String email, String password, BuildContext context) async {
     CurrentState _currentUser=Provider.of<CurrentState>(context,listen: false);
     try{
-      if(await _currentUser.signUpUser(email, password) ){
+      String returnString=await _currentUser.signUpUser(email, password);
+      if(returnString=="success") {
         Navigator.pop(context);
+      }else{
+        Scaffold.of(context).showSnackBar(
+            SnackBar(content:Text(returnString)
+              ,duration:  Duration(seconds: 2),
+            ));
+
       }
     }catch(e){
       print(e);
@@ -62,7 +69,14 @@ class _OurSignupForm extends State<SignupForm>{
               if(_passwordControll.text==_conformpasswordControll.text){
                 _signUpUser(_emailControll.text,_passwordControll.text,context);
 
+              }else{
+                Scaffold.of(context).showSnackBar(
+                   SnackBar(content:Text("password do not mach")
+                     ,duration:  Duration(seconds: 2),
+                ));
+
               }
+
             },
           ),
 
