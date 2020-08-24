@@ -22,7 +22,7 @@ class Ourthem{
       buttonTheme: ButtonThemeData(
           buttonColor: _darkGray,
           padding: EdgeInsets.symmetric(horizontal: 20.0),
-          minWidth: 200,
+          minWidth: 150,
           height: 40.0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(20.0),

@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:jay_books/State/currentUserdata.dart';
 import 'package:jay_books/Widget/OurContener.dart';
+import 'package:jay_books/noGroup/noGroup.dart';
 import 'package:jay_books/root/root.dart';
 import 'package:provider/provider.dart';
 class HomeScreen extends StatelessWidget {
+  void _goToNoGroup(BuildContext context){
+      Navigator.push(context, MaterialPageRoute(builder:(context)=>OurNoGroup()));
+
+  }
   void _signOut(BuildContext context) async{
     CurrentState _currentState=Provider.of<CurrentState>(context,listen:false );
     String _returnString=await _currentState.SignOut();
@@ -51,9 +56,7 @@ class HomeScreen extends StatelessWidget {
           ),
           Padding(padding: const EdgeInsets.symmetric(horizontal:40.0,vertical: 20.0),
               child: RaisedButton(child: Text('Finished Book',style: TextStyle(color: Colors.white),),
-              onPressed: (){
-
-              }
+              onPressed: ()=> _goToNoGroup(context),
               ),
               ),
 
