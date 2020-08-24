@@ -12,10 +12,10 @@ class _OurSignupForm extends State<SignupForm>{
   TextEditingController _passwordControll=TextEditingController();
   TextEditingController _conformpasswordControll=TextEditingController();
 
-  Future _signUpUser(String email, String password, BuildContext context) async {
+  Future _signUpUser(String email, String password, BuildContext context,String fullName) async {
     CurrentState _currentUser=Provider.of<CurrentState>(context,listen: false);
     try{
-      String returnString=await _currentUser.signUpUser(email, password);
+      String returnString=await _currentUser.signUpUser(email, password,fullName);
       if(returnString=="success") {
         Navigator.pop(context);
       }else{
@@ -67,7 +67,7 @@ class _OurSignupForm extends State<SignupForm>{
           ),
             onPressed: (){
               if(_passwordControll.text==_conformpasswordControll.text){
-                _signUpUser(_emailControll.text,_passwordControll.text,context);
+                _signUpUser(_emailControll.text,_passwordControll.text,context,_fullNameControll.text);
 
               }else{
                 Scaffold.of(context).showSnackBar(
