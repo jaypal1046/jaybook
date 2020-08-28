@@ -12,7 +12,7 @@ class HomeScreen extends StatelessWidget {
   void _signOut(BuildContext context) async{
     CurrentState _currentState=Provider.of<CurrentState>(context,listen:false );
     String _returnString=await _currentState.SignOut();
-    if(_returnString=="Success"){
+    if(_returnString=="success"){
       Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context)=>OurRoot()), (route) => false);
     }
 

@@ -32,7 +32,7 @@ class CurrentState extends ChangeNotifier{
     try{
       await _auth.signOut();
       _currentUser=OurUser();
-      retval="Success";
+      retval="success";
     }catch(e){
       print(e);
     }

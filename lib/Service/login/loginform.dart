@@ -3,6 +3,7 @@ import 'package:jay_books/Service/signup/signup.dart';
 import 'package:jay_books/State/currentUserdata.dart';
 import 'package:jay_books/Widget/OurContener.dart';
 import 'package:jay_books/home/home.dart';
+import 'package:jay_books/root/root.dart';
 import 'package:provider/provider.dart';
 enum LoginType{
   email,
@@ -35,7 +36,7 @@ class _OurlofinForm extends State<OurloginForm>{
 
 
       if(_returnString=='success'){
-        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context)=>HomeScreen()), (route) => false);
+        Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context)=>OurRoot()), (route) => false);
       } else{
         Scaffold.of(context).showSnackBar(
           SnackBar(content: Text(_returnString),
@@ -45,7 +46,7 @@ class _OurlofinForm extends State<OurloginForm>{
         );
       }
     }catch(e){
-
+      print(e);
     }
   }
   Widget _googleButton(){
