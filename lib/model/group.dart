@@ -6,11 +6,16 @@ class OurGroup{
   String leader;
   List<String> members;
   Timestamp groupCreated;
+  String currentBookId;
+  Timestamp currentBookDue;
   OurGroup({
     this.id,
     this.name,
     this.leader,
     this.members,
     this.groupCreated,
+    this.currentBookId,
+    this.currentBookDue,
+
 });
 }

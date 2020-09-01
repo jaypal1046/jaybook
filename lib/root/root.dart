@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:jay_books/Service/login/login.dart';
 import 'package:jay_books/SpaceScreen/SpaceScreen.dart';
+import 'package:jay_books/State/currentGroup.dart';
 import 'package:jay_books/State/currentUserdata.dart';
 import 'package:jay_books/home/home.dart';
 import 'package:jay_books/noGroup/noGroup.dart';
@@ -59,7 +60,7 @@ class _OurRootState extends State<OurRoot> {
         retVal=OurNoGroup();
         break;
       case AuthState.inGroup:
-        retVal=HomeScreen();
+        retVal=ChangeNotifierProvider(create: (context)=>CurrentGroupState(), child: HomeScreen(),);
         break;
       default:
     }

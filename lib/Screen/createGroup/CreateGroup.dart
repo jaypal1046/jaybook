@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jay_books/Service/database/database.dart';
-import 'package:jay_books/State/currentUserdata.dart';
+import 'package:jay_books/Screen/addBook/addBook.dart';
+
 import 'package:jay_books/Widget/OurContener.dart';
-import 'package:jay_books/root/root.dart';
-import 'package:provider/provider.dart';
+
 class OurCreateGroup extends StatefulWidget {
   @override
   _OurCreateGroupState createState() => _OurCreateGroupState();
@@ -11,15 +10,15 @@ class OurCreateGroup extends StatefulWidget {
 
 class _OurCreateGroupState extends State<OurCreateGroup> {
 
-  void _createGroup(BuildContext context,String groupName)async{
-CurrentState  currentState=Provider.of<CurrentState>(context,listen: false);
-String returnString=await OurDatabse().CreateGroup(groupName,currentState.getCurrentUser.uid);
-if(returnString=="success"){
-  Navigator.pushAndRemoveUntil(context, MaterialPageRoute(builder:(context)=>OurRoot(), ), (route) => false);
+  void _goToAddBook(BuildContext context,String groupName)async{
+  Navigator.push(context,
+      MaterialPageRoute(builder:(context)=>
+          OurAddBook(onGroupCreate: true,groupName:
+          groupName,),
+      )
+  );
+  }
 
-}
-
-}
   TextEditingController _groupNameContrioller=TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -49,11 +48,11 @@ if(returnString=="success"){
                   ),
                   RaisedButton(child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 95),
-                    child: Text('Create',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15.0,
+                    child: Text('Add Book',style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: 15.0,
                     ),
                     ),
                   ),
-                    onPressed: ()=>_createGroup(context,_groupNameContrioller.text),
+                    onPressed: ()=>_goToAddBook(context,_groupNameContrioller.text),
                   ),
                 ],
               ),

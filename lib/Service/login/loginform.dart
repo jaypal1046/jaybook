@@ -97,7 +97,9 @@ class _OurlofinForm extends State<OurloginForm>{
 
           ),
           TextFormField(controller: _emailController,
-            decoration: InputDecoration(prefix: Icon(Icons.alternate_email),hintText: 'Email' ),),
+            decoration: InputDecoration(prefix: Icon(Icons.alternate_email),hintText: 'Email' ),
+            keyboardType: TextInputType.emailAddress,
+          ),
           SizedBox(height: 20.0,),
           TextFormField(controller: _passwordController,
             decoration: InputDecoration(prefix: Icon(Icons.lock_outline),hintText: 'Password' ),obscureText: true,),
